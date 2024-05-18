@@ -1,0 +1,23 @@
+{
+  "name": "@fsp/front",
+  "version": "0.0.1",
+  "author": "Sergei Svetashev",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.3.4",
+    "astro": "^4.8.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

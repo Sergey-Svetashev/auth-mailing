@@ -1,0 +1,8 @@
+---
+import { Form } from "../components/form";
+import Main from "../layouts/Main.astro";
+---
+
+<Main>
+  <Form client:only="react" isLogin={true} />
+</Main>

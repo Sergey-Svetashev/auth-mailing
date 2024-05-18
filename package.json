@@ -1,0 +1,13 @@
+{
+  "name": "full-stack-pet",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "back": "npm run dev -w @fsp/back",
+    "front": "npm run dev -w @fsp/front"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
