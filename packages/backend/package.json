@@ -1,12 +1,13 @@
 {
   "name": "@fsp/back",
   "version": "0.0.1",
-  "description": "",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "dev": "deno run --watch -A index.ts"
   },
   "author": "Sergei Svetashev",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.6.2"
+  }
 }

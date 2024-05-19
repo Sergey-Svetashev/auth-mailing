@@ -1,11 +1,11 @@
 export const getPosts = async () => {
-  return fetch("http://localhost:8082/get").then(async (result) => {
-    return JSON.stringify(await result.json());
+  return fetch("http://localhost:8082/get-user").then(async (result) => {
+    return result.json();
   });
 };
 
-export const writePost = async () => {
-  return fetch("http://localhost:8082/add", {
+export const createPost = async () => {
+  return fetch("http://localhost:8082/create", {
     method: "POST",
   }).then(async (response) => {
     const res = await response.json();

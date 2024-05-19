@@ -3,6 +3,6 @@ import * as Content from './controllers/content.ts'
 
 export const router = new Router();
 
-router.get("/get", Content.getMain);
+router.get("/get-user", Content.getUserData);
 
-router.post("/add", Content.createFile);
+router.post("/create", Content.createPost);
