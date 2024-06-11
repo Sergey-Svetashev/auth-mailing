@@ -1,0 +1,14 @@
+{
+  "imports": {
+    "bcrypt": "https://deno.land/x/bcrypt/mod.ts",
+    "jose": "https://deno.land/x/jose@v5.4.0/index.ts",
+    "mongodb": "npm:mongodb@6.6.0",
+    "oak/": "https://deno.land/x/oak@v13.2.3/",
+    "std/": "https://deno.land/std@0.224.0/"
+  },
+  "tasks": {
+    "start": "deno run --watch -A index.ts",
+    "lint": "deno lint",
+    "fmt:check": "deno fmt --check"
+  }
+}

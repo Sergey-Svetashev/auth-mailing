@@ -1,0 +1,23 @@
+{
+  "name": "@fsp/front",
+  "version": "0.0.1",
+  "author": "Sergei Svetashev",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^3.5.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.10.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  },
+  "workspaces": ["packages/*"]
+}
