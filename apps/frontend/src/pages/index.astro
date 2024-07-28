@@ -1,8 +1,14 @@
 ---
+import { Title } from "../components/title";
 import Main from "../layouts/Main.astro";
-import { Home } from "../views/home";
+import { MainForm } from "../views/main";
+
+const { page } = Astro.props;
+
+console.log("page", page);
 ---
 
 <Main>
-  <Home client:only="react" />
+  <Title text="A letter to Santa" />
+  <MainForm client:only="react" />
 </Main>

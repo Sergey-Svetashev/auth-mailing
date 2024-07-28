@@ -1,1 +1,3 @@
-export const Title = ({title}: {title: string}) => <h1>{title}</h1>;
+export const Title = ({ text }: { text: string }) => (
+  <h1 className="font-bold text-2xl">{text}</h1>
+);

@@ -34,6 +34,8 @@ Monorepo Benefits
 
 This monorepo project leverages the strengths of React and Astro.js for a performant and interactive frontend, while utilizing Deno's modern features for a secure and efficient backend. The monorepo structure ensures a cohesive development experience, promotes code reuse, and streamlines the workflow from development to deployment.
 
+**Note:** A `--unsafely-ignore-certificate-errors` flag is used due to failed certificate on the user resources.
+
 After performing an `npm i` command, run in the different terminals following commands:
 
 ```shell

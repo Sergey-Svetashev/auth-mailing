@@ -1,18 +1,20 @@
-import { Application, Context } from "oak/mod.ts";
+import type { Context } from "oak/mod.ts";
+import { Application } from "oak/mod.ts";
 import { load } from "std/dotenv/mod.ts";
 import { errorHandle } from "./middleware/error.ts";
+import { requestQueue } from "./middleware/requestQueue.ts";
 import { router } from "./router.ts";
-import { mondoDBConnect } from "./utils/database.ts";
+import type { State } from "./state/index.ts";
+import { appState } from "./state/index.ts";
 
 const env = await load();
 const PORT = Number(env["PORT"]);
+const CLIENT_ORIGIN = env["CLIENT_ORIGIN"];
 
-const origin = "http://localhost:4321";
-const app = new Application();
+const app = new Application<State>({ state: appState });
 
 app.use(async ({ response }: Context, next) => {
-  console.log("Backend has been started");
-  response.headers.set("Access-Control-Allow-Origin", origin);
+  response.headers.set("Access-Control-Allow-Origin", CLIENT_ORIGIN);
   response.headers.set(
     "Access-Control-Allow-Methods",
     "OPTIONS, GET, POST, PUT, PATCH, DELETE"
@@ -30,6 +32,6 @@ app.use(errorHandle);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-mondoDBConnect(() => {
-  app.listen({ port: PORT || 8082 });
-});
+app.use(requestQueue);
+
+app.listen({ port: PORT || 8081 });

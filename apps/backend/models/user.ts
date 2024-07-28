@@ -1,24 +1,53 @@
-import { getDb } from "../utils/database.ts";
+import { calculateAge } from "../utils/dates.ts";
+import { GenericError } from "./errors.ts";
 
-type UserNotes = Array<Partial<{ title: string; text: string }>>;
+type UserEntry = {
+  username: string;
+  uid: string;
+};
 
-export class User {
+type UserProfile = {
+  userUid: string;
+  address: string;
+  birthdate: string;
+};
+
+const usersURL =
+  "https://raw.githubusercontent.com/alj-devops/santa-data/master/users.json";
+const profilesURL =
+  "https://raw.githubusercontent.com/alj-devops/santa-data/master/userProfiles.json";
+
+interface IUser {
+  permission: () => boolean;
+}
+
+export class User implements IUser {
   constructor(
+    public id: string,
     public name: string,
-    public email: string,
-    public password: string,
-    public notes?: UserNotes
+    public birthDate: string,
+    public address?: string,
+    public text?: string
   ) {}
 
-  public static getUser(email: string) {
-    const db = getDb();
+  public static async get(name: string): Promise<User | void> {
+      const usersResponse = await fetch(usersURL);
+      const userProfilesResponse = await fetch(profilesURL);
+      const users: UserEntry[] = await usersResponse.json();
+      const userProfiles: UserProfile[] = await userProfilesResponse.json();
+      const user = users.find((entry) => entry.username === name);
+      const profile = userProfiles.find((entry) => entry.userUid === user?.uid);
 
-    return db.collection("users").findOne({ email }); //TODO: return error
+      if (user && profile) {
+        return new User(user.uid, name, profile.birthdate, profile.address);
+      } else {
+        throw new GenericError(401, "User does not exist");
+      }
   }
 
-  public save() {
-    const db = getDb();
+  public permission(): boolean {
+    const age = calculateAge(this.birthDate);
 
-    return db.collection("users").insertOne(this);
+    return age >= 10;
   }
 }

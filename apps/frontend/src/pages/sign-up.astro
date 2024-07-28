@@ -1,9 +1,0 @@
----
-import { PATH } from "../api";
-import Main from "../layouts/Main.astro";
-import { AuthFormView } from "../views/auth";
----
-
-<Main>
-  <AuthFormView client:only="react" path={PATH.SIGN_UP} />
-</Main>

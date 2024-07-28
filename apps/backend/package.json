@@ -1,0 +1,8 @@
+{
+  "name": "@fsp/back",
+  "version": "0.0.1",
+  "author": "Sergei Svetashev",
+  "scripts": {
+    "dev": "deno run --watch -A --unsafely-ignore-certificate-errors index.ts"
+  }
+}
