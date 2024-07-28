@@ -1,0 +1,8 @@
+---
+import Main from "../layouts/Main.astro";
+import { ResultNote } from "../views/result";
+---
+
+<Main>
+  <ResultNote client:only="react" defaultText="Your Wish is on the way." /> 
+</Main>

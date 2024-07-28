@@ -13,14 +13,14 @@ export const errorHandle = async (
         response.body = { message: error.message || "Not found a resource." };
 
         break;
-      case Status.BadRequest:
-        response.status = Status.BadRequest;
-        response.body = { message: error.message || "User does not exist." };
+      case Status.Forbidden:
+        response.status = Status.Forbidden;
+        response.body = { message: error.message || "User is not allowed to proceed as he is too young." };
 
         break;
       case Status.Unauthorized:
         response.status = Status.Unauthorized;
-        response.body = { message: error.message || "Not authenticated." };
+        response.body = { message: error.message || "User does not exist. Please register." };
 
         break;
       default:

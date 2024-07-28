@@ -8,7 +8,7 @@ export default defineConfig({
   vite: {
     server: {
       fs: {
-        strict: false, // TODO: investigate & resolve
+        strict: false,
       },
     },
   },

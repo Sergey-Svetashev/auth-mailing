@@ -2,9 +2,15 @@
   "name": "full-stack-pet",
   "private": true,
   "version": "0.0.1",
+  "author": "Sergei Svetashev",
   "type": "module",
   "scripts": {
-    "front": "npm run dev -w @fsp/front"
+    "back": "npm run dev -w @fsp/back",
+    "front": "npm run dev -w @fsp/front",
+    "start": "npm run back & npm run front"
+  },
+  "engines": {
+    "node": "20.x"
   },
   "workspaces": [
     "packages/*",

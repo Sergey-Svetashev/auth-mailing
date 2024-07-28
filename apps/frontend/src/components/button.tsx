@@ -1,7 +1,13 @@
 export const Button = ({
   callback,
   text = "Submit",
+  type = "submit",
 }: {
-  callback: () => void;
+  callback?: () => void;
   text?: string;
-}) => <button onClick={callback}>{text}</button>;
+  type?: "submit" | "button" | "reset";
+}) => (
+  <button className="btn" onClick={callback} type={type}>
+    {text}
+  </button>
+);

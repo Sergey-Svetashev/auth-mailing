@@ -1,7 +1,7 @@
-export class ApiError extends Error {
+export class GenericError extends Error {
   constructor(
-    public readonly message: string,
     public readonly statusCode: number,
+    public readonly message: string = '',
     public readonly cause?: Error
   ) {
     super(`Error: ${message} ${cause ? `caused by ${cause.message}` : ""}`);
