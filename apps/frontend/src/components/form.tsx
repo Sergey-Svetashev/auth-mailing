@@ -25,7 +25,7 @@ export const Form = ({
 
     <div className="mt-3">
       <label className="block" htmlFor="confirmPassword">
-        What do you want for christmas?
+        What do you want?
       </label>
       <textarea id={`${id}-text`} name="text" required rows={5} />
     </div>
