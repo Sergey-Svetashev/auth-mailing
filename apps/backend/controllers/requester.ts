@@ -20,7 +20,7 @@ export const checkBeforeSend = async (
 
   response.status = 200;
   response.body = JSON.stringify({
-    message: `Dear ${user?.name} your wish has been sent to the North Pole`,
+    message: `Dear ${user?.name} your wish has been sent.`,
   });
 
   await next();

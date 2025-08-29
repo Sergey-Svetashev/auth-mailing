@@ -15,10 +15,7 @@ const app = new Application<State>({ state: appState });
 
 app.use(async ({ response }: Context, next) => {
   response.headers.set("Access-Control-Allow-Origin", CLIENT_ORIGIN);
-  response.headers.set(
-    "Access-Control-Allow-Methods",
-    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-  );
+  response.headers.set("Access-Control-Allow-Methods", "GET, POST");
   response.headers.set(
     "Access-Control-Allow-Headers",
     "Content-Type, Authorization"
@@ -28,10 +25,8 @@ app.use(async ({ response }: Context, next) => {
 });
 
 app.use(errorHandle);
-
 app.use(router.routes());
 app.use(router.allowedMethods());
-
 app.use(requestQueue);
 
 app.listen({ port: PORT || 8081 });
