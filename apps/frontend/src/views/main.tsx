@@ -1,7 +1,7 @@
 import { navigate } from "astro:transitions/client";
 import { FormEvent } from "react";
-import { requestHandler } from "../api";
-import { Form } from "../components/form";
+import { requestHandler } from "../api/index.ts";
+import { Form } from "../components/form.tsx";
 
 export const MainForm = () => {
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {

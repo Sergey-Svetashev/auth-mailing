@@ -1,5 +1,6 @@
 import { calculateAge } from "../utils/dates.ts";
 import { GenericError } from "./errors.ts";
+import { Status } from "oak/mod.ts";
 
 type UserEntry = {
   username: string;
@@ -31,18 +32,18 @@ export class User implements IUser {
   ) {}
 
   public static async get(name: string): Promise<User | void> {
-      const usersResponse = await fetch(usersURL);
-      const userProfilesResponse = await fetch(profilesURL);
-      const users: UserEntry[] = await usersResponse.json();
-      const userProfiles: UserProfile[] = await userProfilesResponse.json();
-      const user = users.find((entry) => entry.username === name);
-      const profile = userProfiles.find((entry) => entry.userUid === user?.uid);
+    const usersResponse = await fetch(usersURL);
+    const userProfilesResponse = await fetch(profilesURL);
+    const users: UserEntry[] = await usersResponse.json();
+    const userProfiles: UserProfile[] = await userProfilesResponse.json();
+    const user = users.find((entry) => entry.username === name);
+    const profile = userProfiles.find((entry) => entry.userUid === user?.uid);
 
-      if (user && profile) {
-        return new User(user.uid, name, profile.birthdate, profile.address);
-      } else {
-        throw new GenericError(401, "User does not exist");
-      }
+    if (user && profile) {
+      return new User(user.uid, name, profile.birthdate, profile.address);
+    } else {
+      throw new GenericError(Status.Unauthorized);
+    }
   }
 
   public permission(): boolean {

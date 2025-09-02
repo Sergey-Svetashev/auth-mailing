@@ -1,4 +1,4 @@
-import { FormData } from "../models";
+import { FormData } from "../models/index.ts";
 
 const BASE_URL = "http://localhost:8081";
 
@@ -23,3 +23,7 @@ export const requestHandler = (
         return { success: false };
     }
   });
+
+export const signUpRequest = () => {
+  
+}
